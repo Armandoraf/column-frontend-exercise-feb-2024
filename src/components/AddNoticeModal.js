@@ -7,6 +7,9 @@ import { toast } from "react-toastify";
 //Note: Ideally, adding a new notice would not necessitate a full data refetch.
 // Given more time, I would fix this via a state management/local storage solution as described in ./SearchResults.js
 
+//Note: Potential inconsistencies arise in relying on Firestore handling dates in UTC while the notice reader/writer is in another zone (like PST)
+//In order to sync any potential inconsistencies from adding modals, I would leverage the same strategy of timezone compensations as I did in the "Filter by date" results in ./SearchResults.js
+
 export function AddNoticeModal({ onClose, onNoticeAdded }) {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
